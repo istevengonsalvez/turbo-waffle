@@ -4,7 +4,7 @@ on: [pull_request]
 
 jobs:
   delivery:
-
+    name: PR Validation
     runs-on: ubuntu-latest
 
     steps:
