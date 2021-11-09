@@ -15,7 +15,7 @@ jobs:
     - name: crypto
       id: crypto
       run: |
-        test="123"
+        test=`curl https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY={{secrets.COIN_KEY}}`
         echo "::set-output name=coin_data::$test"
     outputs:
       coin_data: ${{ steps.crypto.outputs.coin_data }}
@@ -29,7 +29,7 @@ jobs:
             **Hello**
             🌏
             latest crypto data
-            curl https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY={{secrets.COIN_KEY}}
+            
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
