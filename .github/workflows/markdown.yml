@@ -15,8 +15,9 @@ jobs:
     - name: crypto
       id: crypto
       run: |
-        test=`curl https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY={{secrets.COIN_KEY}}`
+        test=`curl https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=${{secrets.COIN_KEY}}`
         echo "::set-output name=coin_data::$test"
+        echo "${{secrets.COIN_KEY}}"
     outputs:
       coin_data: ${{ steps.crypto.outputs.coin_data }}
   test:
